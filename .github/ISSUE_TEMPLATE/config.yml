@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions & Discussions
+    url: https://github.com/Mario-Valente/avro-codec/discussions
+    about: Ask questions and discuss ideas in GitHub Discussions
+  - name: Apache Avro Specification
+    url: https://avro.apache.org/docs/current/specification/
+    about: Reference the official Apache Avro specification
+  - name: Stack Overflow
+    url: https://stackoverflow.com/questions/tagged/avro+go
+    about: Search for existing answers on Stack Overflow

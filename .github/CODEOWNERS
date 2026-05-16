@@ -1,0 +1,32 @@
+# CODEOWNERS - Define code ownership for automatic PR review requests
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+* @Mario-Valente
+
+# Core codec implementation
+/*.go @Mario-Valente
+
+# Code generation
+/gen/ @Mario-Valente
+/cmd/avrogen/ @Mario-Valente
+
+# Schema validation tool
+/cmd/avrosv/ @Mario-Valente
+
+# Object Container Files
+/ocf/ @Mario-Valente
+
+# Schema Registry client
+/registry/ @Mario-Valente
+
+# Schema on Envelope
+/soe/ @Mario-Valente
+
+# CI/CD and GitHub configuration
+/.github/ @Mario-Valente
+
+# Documentation
+/README.md @Mario-Valente
+/CONTRIBUTING.md @Mario-Valente
+/SECURITY.md @Mario-Valente
