@@ -1,0 +1,112 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      GO_VERSION: "1.25"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Install Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: ${{ env.GO_VERSION }}
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Run tests
+        run: go test -race ./...
+
+      - name: Build binaries
+        run: |
+          # Create dist directory
+          mkdir -p dist
+
+          # Define platforms
+          platforms=(
+            "darwin/amd64"
+            "darwin/arm64"
+            "linux/386"
+            "linux/amd64"
+            "linux/arm64"
+            "linux/arm/7"
+            "windows/amd64"
+          )
+
+          for platform in "${platforms[@]}"; do
+            # Parse platform
+            IFS='/' read -r os arch arm <<< "$platform"
+
+            # Set output name
+            output_name="avrogen-${os}-${arch}"
+            output_name_sv="avrosv-${os}-${arch}"
+
+            if [ -n "$arm" ]; then
+              output_name="avrogen-${os}-${arch}v${arm}"
+              output_name_sv="avrosv-${os}-${arch}v${arm}"
+            fi
+
+            if [ "$os" = "windows" ]; then
+              output_name="${output_name}.exe"
+              output_name_sv="${output_name_sv}.exe"
+            fi
+
+            echo "Building for $os/$arch..."
+
+            # Build avrogen
+            GOOS=$os GOARCH=$arch GOARM=$arm go build -ldflags="-s -w" -o "dist/${output_name}" ./cmd/avrogen
+
+            # Build avrosv
+            GOOS=$os GOARCH=$arch GOARM=$arm go build -ldflags="-s -w" -o "dist/${output_name_sv}" ./cmd/avrosv
+          done
+
+      - name: Generate checksums
+        run: |
+          cd dist
+          sha256sum * > checksums.txt
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get the previous tag
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+
+          if [ -z "$PREV_TAG" ]; then
+            echo "No previous tag found, using all commits"
+            COMMITS=$(git log --pretty=format:"- %s (%h)" --no-merges)
+          else
+            echo "Previous tag: $PREV_TAG"
+            COMMITS=$(git log ${PREV_TAG}..HEAD --pretty=format:"- %s (%h)" --no-merges)
+          fi
+
+          # Write changelog to file
+          echo "## What's Changed" > CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "$COMMITS" >> CHANGELOG.md
+          echo "" >> CHANGELOG.md
+          echo "**Full Changelog**: https://github.com/${{ github.repository }}/compare/${PREV_TAG}...${{ github.ref_name }}" >> CHANGELOG.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: CHANGELOG.md
+          files: |
+            dist/*
+          draft: false
+          prerelease: ${{ contains(github.ref_name, '-rc') || contains(github.ref_name, '-beta') || contains(github.ref_name, '-alpha') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

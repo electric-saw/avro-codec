@@ -1,0 +1,91 @@
+# Configuration for actions/labeler
+# https://github.com/actions/labeler
+
+# Core codec changes
+core:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '*.go'
+          - '!*_test.go'
+          - '!cmd/**'
+          - '!gen/**'
+          - '!ocf/**'
+          - '!registry/**'
+          - '!soe/**'
+
+# Schema-related changes
+schema:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'schema*.go'
+          - 'protocol*.go'
+
+# Code generation
+codegen:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'gen/**'
+          - 'cmd/avrogen/**'
+
+# Object Container Files
+ocf:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'ocf/**'
+
+# Schema Registry
+registry:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'registry/**'
+
+# Schema on Envelope
+soe:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'soe/**'
+
+# CLI tools
+cli:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'cmd/**'
+
+# Tests
+tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*_test.go'
+          - 'testdata/**'
+
+# Documentation
+documentation:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '*.md'
+          - 'docs/**'
+
+# CI/CD
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**'
+          - 'Makefile'
+          - '.golangci.yml'
+
+# Dependencies
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'go.mod'
+          - 'go.sum'
+
+# Encoding/Decoding
+encoding:
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'encoder*.go'
+          - 'decoder*.go'
+          - 'reader*.go'
+          - 'writer*.go'
+          - 'codec*.go'
