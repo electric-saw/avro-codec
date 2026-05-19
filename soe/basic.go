@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/hamba/avro/v2"
+	"github.com/electric-saw/avro-codec/v2"
 )
 
 // Codec marshals values to/from bytes, with the Avro binary payload wrapped in

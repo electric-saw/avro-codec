@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/hamba/avro/v2"
+	"github.com/electric-saw/avro-codec/v2"
 )
 
 // ErrUnknownSchema is an API error that must be returned if the requested

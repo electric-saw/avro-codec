@@ -1,15 +1,11 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="http://svg.wiersma.co.za/hamba/project?title=avro&tag=A%20fast%20Go%20avro%20codec&mode=dark">
-  <source media="(prefers-color-scheme: light)" srcset="http://svg.wiersma.co.za/hamba/project?title=avro&tag=A%20fast%20Go%20avro%20codec">
-  <img alt="Logo" src="http://svg.wiersma.co.za/hamba/project?title=avro&tag=A%20fast%20Go%20avro%20codec">
-</picture>
+# avro-codec
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/hamba/avro/v2)](https://goreportcard.com/report/github.com/hamba/avro/v2)
-[![Build Status](https://github.com/hamba/avro/actions/workflows/test.yml/badge.svg)](https://github.com/hamba/avro/actions)
-[![Coverage Status](https://coveralls.io/repos/github/hamba/avro/badge.svg?branch=main)](https://coveralls.io/github/hamba/avro?branch=main)
-[![Go Reference](https://pkg.go.dev/badge/github.com/hamba/avro/v2.svg)](https://pkg.go.dev/github.com/hamba/avro/v2)
-[![GitHub release](https://img.shields.io/github/release/hamba/avro.svg)](https://github.com/hamba/avro/releases)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/hamba/avro/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/electric-saw/avro-codec/v2)](https://goreportcard.com/report/github.com/electric-saw/avro-codec/v2)
+[![Build Status](https://github.com/electric-saw/avro-codec/actions/workflows/test.yml/badge.svg)](https://github.com/electric-saw/avro-codec/actions)
+[![Coverage Status](https://coveralls.io/repos/github/electric-saw/avro-codec/badge.svg?branch=main)](https://coveralls.io/github/electric-saw/avro-codec?branch=main)
+[![Go Reference](https://pkg.go.dev/badge/github.com/electric-saw/avro-codec/v2.svg)](https://pkg.go.dev/github.com/electric-saw/avro-codec/v2)
+[![GitHub release](https://img.shields.io/github/release/electric-saw/avro-codec.svg)](https://github.com/electric-saw/avro-codec/releases)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/electric-saw/avro-codec/main/LICENSE)
 
 A fast Go avro codec
 
@@ -64,7 +60,7 @@ fmt.Println(out)
 // Outputs: {27 foo}
 ```
 
-More examples in the [godoc](https://pkg.go.dev/github.com/hamba/avro/v2).
+More examples in the [godoc](https://pkg.go.dev/github.com/electric-saw/avro-codec/v2).
 
 #### Types Conversions
 
@@ -232,7 +228,7 @@ You can use the avrogen command line tool to generate the structs, or use it as 
 Install the struct generator with:
 
 ```shell
-go install github.com/hamba/avro/v2/cmd/avrogen@<version>
+go install github.com/electric-saw/avro-codec/v2/cmd/avrogen@<version>
 ```
 
 Example usage assuming there's a valid schema in `in.avsc`:
@@ -279,7 +275,7 @@ schemas to the console. It can be used in CI/CD pipelines to validate schema cha
 Install the Avro schema validator with:
 
 ```shell
-go install github.com/hamba/avro/v2/cmd/avrosv@<version>
+go install github.com/electric-saw/avro-codec/v2/cmd/avrosv@<version>
 ```
 
 Example usage assuming there's a valid schema in `in.avsc` (exit status code is `0`):
@@ -328,8 +324,6 @@ This library supports the last two versions of Go. While the minimum Go version 
 not guaranteed to increase along side Go, it may jump from time to time to support
 additional features. This will be not be considered a breaking change.
 
-## Who uses hamba/avro?
+## Credits
 
-- [Apache Arrow for Go](https://github.com/apache/arrow-go)
-- [confluent-kafka-go](https://github.com/confluentinc/confluent-kafka-go)
-- [pulsar-client-go](https://github.com/apache/pulsar-client-go)
+This project is a fork of [hamba/avro](https://github.com/hamba/avro).
