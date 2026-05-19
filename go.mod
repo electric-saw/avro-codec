@@ -1,4 +1,4 @@
-module github.com/hamba/avro/v2
+module github.com/electric-saw/avro-codec/v2
 
 go 1.24.0
 

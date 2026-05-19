@@ -1,6 +1,6 @@
 package avro_test
 
-import "github.com/hamba/avro/v2"
+import "github.com/electric-saw/avro-codec/v2"
 
 func ConfigTeardown() {
 	// Reset the caches

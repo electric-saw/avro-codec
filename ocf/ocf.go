@@ -13,8 +13,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/hamba/avro/v2"
-	"github.com/hamba/avro/v2/internal/bytesx"
+	"github.com/electric-saw/avro-codec/v2"
+	"github.com/electric-saw/avro-codec/v2/internal/bytesx"
 	"github.com/klauspost/compress/zstd"
 )
 

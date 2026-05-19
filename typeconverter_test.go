@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/hamba/avro/v2"
+	"github.com/electric-saw/avro-codec/v2"
 )
 
 var (
