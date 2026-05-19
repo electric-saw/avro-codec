@@ -18,7 +18,7 @@ A fast Go avro codec
 Install with:
 
 ```shell
-go get github.com/Mario-Valente/avro-codec/v2
+go get github.com/electric-saw/avro-codec/v2
 ```
 
 **Note:** This project has renamed the default branch from `master` to `main`. You will need to update your local environment.
